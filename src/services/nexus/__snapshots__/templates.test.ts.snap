@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Templates should create latest-metadata.xml 1`] = `
+"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>
+<metadata>
+  <groupId>com.github.skatteetaten</groupId>
+  <artifactId>test</artifactId>
+  <version>1</version>
+  <versioning>
+    <lastUpdated>20190826200800</lastUpdated>
+  </versioning>
+</metadata>
+"
+`;
+
+exports[`Templates should create pom.xml 1`] = `
+"<project xmlns=\\"http://maven.apache.org/POM/4.0.0\\"
+  xmlns:xsi=\\"http://www.w3.org/2001/XMLSchema-instance\\"
+  xsi:schemaLocation=\\"http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd\\">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.github.skatteetaten</groupId>
+  <artifactId>test</artifactId>
+  <version>1</version>
+  <packaging>zip</packaging>
+</project>
+"
+`;
+
+exports[`Templates should create project-metadata.xml 1`] = `
+"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>
+<metadata>
+  <groupId>com.github.skatteetaten</groupId>
+  <artifactId>test</artifactId>
+  <version>1</version>
+  <versioning>
+    <latest>1</latest>
+    <versions>
+      <version>1</version>
+    </versions>
+    <lastUpdated>20190826200800</lastUpdated>
+  </versioning>
+</metadata>
+"
+`;

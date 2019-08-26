@@ -1,0 +1,17 @@
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/lib
+*.tgz
+
+# misc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+*.iml
+.idea
