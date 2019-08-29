@@ -1,4 +1,5 @@
 import http, { RequestOptions } from 'http';
+import https from 'https';
 
 export interface NexusAuthentication {
   username: string;
@@ -42,7 +43,9 @@ export class NexusDeployer {
       }
     };
 
-    const req = http.request(reqOptions, res => {
+    const requester = url.protocol === 'http:' ? http : https;
+
+    const req = requester.request(reqOptions, res => {
       const uploadPath = `${this.config.url}/${targetFile}`;
       res.setEncoding('utf8');
       res.on('data', chunk => {

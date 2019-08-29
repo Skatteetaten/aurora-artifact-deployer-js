@@ -51,7 +51,6 @@ export const PROJECT_METADATA_XML = ({
 <metadata>
   <groupId>${groupId}</groupId>
   <artifactId>${artifactId}</artifactId>
-  <version>${version}</version>
   <versioning>
     <latest>${version}</latest>
     <versions>
