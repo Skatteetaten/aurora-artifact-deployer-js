@@ -43,6 +43,7 @@ export class NexusDeployer {
     };
 
     const req = http.request(reqOptions, res => {
+      const uploadPath = `${this.config.url}/${targetFile}`;
       res.setEncoding('utf8');
       res.on('data', chunk => {
         console.log(chunk);
@@ -50,11 +51,11 @@ export class NexusDeployer {
       res.on('error', handleError);
       res.on('end', () => {
         if (res.statusCode && res.statusCode < 400) {
-          handleSuccess(`${this.config.url}/${targetFile}`);
+          handleSuccess(uploadPath);
         } else {
           handleError(
             new Error(
-              `Failed to upload file=${targetFile} status=${res.statusCode} message=${res.statusMessage}`
+              `Failed to upload ${uploadPath} status=${res.statusCode} message=${res.statusMessage}`
             )
           );
         }
