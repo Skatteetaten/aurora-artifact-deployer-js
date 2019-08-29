@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MetadataService generateMetadataFiles should create files 1`] = `
+Array [
+  Object {
+    "content": "test",
+    "name": "deployer-1.0.0-Webleveransepakke.tgz",
+    "path": "no/skatteetaten/aurora/deployer/1.0.0",
+    "type": "artifact",
+  },
+  Object {
+    "content": "098f6bcd4621d373cade4e832627b4f6",
+    "name": "deployer-1.0.0-Webleveransepakke.tgz.md5",
+    "path": "no/skatteetaten/aurora/deployer/1.0.0",
+    "type": "artifact",
+  },
+  Object {
+    "content": "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3",
+    "name": "deployer-1.0.0-Webleveransepakke.tgz.sha1",
+    "path": "no/skatteetaten/aurora/deployer/1.0.0",
+    "type": "artifact",
+  },
+  Object {
+    "content": "<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>
+<metadata>
+  <groupId>no.skatteetaten.aurora</groupId>
+  <artifactId>deployer</artifactId>
+  <version>1.0.0</version>
+  <versioning>
+    <latest>1.0.0</latest>
+    <versions>
+      <version>1.0.0</version>
+    </versions>
+    <lastUpdated>20190826200800</lastUpdated>
+  </versioning>
+</metadata>
+",
+    "name": "maven-metadata.xml",
+    "path": "no/skatteetaten/aurora/deployer",
+    "type": "project",
+  },
+  Object {
+    "content": "2f6416ca4e6e14b06bc3431e6c3b6a9e",
+    "name": "maven-metadata.xml.md5",
+    "path": "no/skatteetaten/aurora/deployer",
+    "type": "project",
+  },
+  Object {
+    "content": "c6fe13c9c41b87b2a54bf9865899b70226788777",
+    "name": "maven-metadata.xml.sha1",
+    "path": "no/skatteetaten/aurora/deployer",
+    "type": "project",
+  },
+  Object {
+    "content": "<project xmlns=\\"http://maven.apache.org/POM/4.0.0\\"
+  xmlns:xsi=\\"http://www.w3.org/2001/XMLSchema-instance\\"
+  xsi:schemaLocation=\\"http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd\\">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>no.skatteetaten.aurora</groupId>
+  <artifactId>deployer</artifactId>
+  <version>1.0.0</version>
+  <packaging>tgz</packaging>
+</project>
+",
+    "name": "deployer-1.0.0.pom",
+    "path": "no/skatteetaten/aurora/deployer/1.0.0",
+    "type": "pom",
+  },
+  Object {
+    "content": "2ae5c8c90c512a756bad34f6c603c9a5",
+    "name": "deployer-1.0.0.pom.md5",
+    "path": "no/skatteetaten/aurora/deployer/1.0.0",
+    "type": "pom",
+  },
+  Object {
+    "content": "0d6ace405906a7528d555fa04f415135c8861911",
+    "name": "deployer-1.0.0.pom.sha1",
+    "path": "no/skatteetaten/aurora/deployer/1.0.0",
+    "type": "pom",
+  },
+]
+`;
