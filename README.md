@@ -42,5 +42,5 @@ const options: DeployToNexusOptions = {
   parallel: true
 };
 
-deployToNexus(schema, config, options);
+deployToNexus(schema, config, options).catch(console.log);
 ```
