@@ -25,7 +25,6 @@ Array [
 <metadata>
   <groupId>no.skatteetaten.aurora</groupId>
   <artifactId>deployer</artifactId>
-  <version>1.0.0</version>
   <versioning>
     <latest>1.0.0</latest>
     <versions>
@@ -40,13 +39,13 @@ Array [
     "type": "project",
   },
   Object {
-    "content": "2f6416ca4e6e14b06bc3431e6c3b6a9e",
+    "content": "309c0689fbb0da2223dea252f6f60e78",
     "name": "maven-metadata.xml.md5",
     "path": "no/skatteetaten/aurora/deployer",
     "type": "project",
   },
   Object {
-    "content": "c6fe13c9c41b87b2a54bf9865899b70226788777",
+    "content": "7575a4e8a8fbb75778ea4912d56b40246105f8bc",
     "name": "maven-metadata.xml.sha1",
     "path": "no/skatteetaten/aurora/deployer",
     "type": "project",
