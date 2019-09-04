@@ -7,19 +7,19 @@ import {
   MavenSchema
 } from './templates';
 
-export interface Metadata {
+export interface ContentMetaData {
   path: string;
   name: string;
 }
 
-export interface MetadataTypes {
-  artifact: Metadata;
-  project: Metadata;
-  pom: Metadata;
-  latest?: Metadata;
+export interface ContentTypes {
+  artifact: ContentMetaData;
+  project: ContentMetaData;
+  pom: ContentMetaData;
+  latest?: ContentMetaData;
 }
 
-export type FileType = keyof MetadataTypes;
+export type FileType = keyof ContentTypes;
 
 export interface UploadFile {
   path: string;
@@ -41,24 +41,24 @@ export class MetadataService {
   ): UploadFile[] {
     const meta = this.getUploadMetadata(classifier);
 
-    const artifactFiles = this.generateContent(
+    const artifactFiles = this.generateUploadFiles(
       'artifact',
       meta.artifact,
       artifactContent
     );
-    const pomFiles = this.generateContent(
+    const pomFiles = this.generateUploadFiles(
       'pom',
       meta.pom,
       POM_XML(this.schema)
     );
-    const projectFiles = this.generateContent(
+    const projectFiles = this.generateUploadFiles(
       'project',
       meta.project,
       PROJECT_METADATA_XML(this.schema)
     );
 
     const latestFiles = meta.latest
-      ? this.generateContent(
+      ? this.generateUploadFiles(
           'latest',
           meta.latest,
           LATEST_METADATA_XML(this.schema)
@@ -68,7 +68,7 @@ export class MetadataService {
     return [...artifactFiles, ...projectFiles, ...pomFiles, ...latestFiles];
   }
 
-  private getUploadMetadata(classifier?: string): MetadataTypes {
+  private getUploadMetadata(classifier?: string): ContentTypes {
     const { artifactId, groupId, version, packaging } = this.schema;
 
     const applyClassifier = (text: string): string => {
@@ -79,7 +79,7 @@ export class MetadataService {
     const artifactName = artifactId + '-' + version;
     const artifactNameWithClassifier = applyClassifier(artifactName);
 
-    const files: MetadataTypes = {
+    const files: ContentTypes = {
       project: {
         path: `${groupIdAsPath}/${artifactId}`,
         name: `maven-metadata.xml`
@@ -104,9 +104,9 @@ export class MetadataService {
     return files;
   }
 
-  private generateContent(
+  private generateUploadFiles(
     type: FileType,
-    { name, path }: Metadata,
+    { name, path }: ContentMetaData,
     content: Buffer
   ): UploadFile[] {
     return [

@@ -32,7 +32,6 @@ exports[`Templates should create project-metadata.xml 1`] = `
 <metadata>
   <groupId>com.github.skatteetaten</groupId>
   <artifactId>test</artifactId>
-  <version>1</version>
   <versioning>
     <latest>1</latest>
     <versions>

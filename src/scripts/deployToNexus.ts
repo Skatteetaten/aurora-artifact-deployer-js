@@ -5,7 +5,7 @@ import {
   MetadataService,
   FileType,
   UploadFile
-} from '../services/nexus/NexusMetadata';
+} from '../services/nexus/MetadataService';
 import { getLastUpdatedTime } from '../utils/date';
 import { mkdirp } from '../utils/files';
 import { MavenSchema } from '../services/nexus/templates';
@@ -68,32 +68,28 @@ export async function deployToNexus(
   };
 
   const uploadFuncs = files.map(createPromise);
-
-  const results: { success: boolean }[] = [];
   const handleUploadFunc = async (fn: () => Promise<string>): Promise<void> => {
-    try {
-      const file = await fn();
-      console.log('Uploaded', file);
-      results.push({ success: true });
-    } catch (e) {
-      console.log(e.message);
-      results.push({ success: false });
-    }
+    const file = await fn();
+    console.log('Uploaded', file);
   };
 
-  // TODO: Don't upload project files if artifact upload failes.
+  const isArtifactFile = (file: UploadFile): boolean =>
+    file.type === 'artifact' &&
+    !['md5', 'sha1'].includes(file.name.split('.').pop() || '');
+
+  const artifactIndex = files.findIndex(isArtifactFile);
+
+  // Upload artifact first to prevent uploading the rest if it failes.
+  if (artifactIndex >= 0) {
+    await handleUploadFunc(uploadFuncs[artifactIndex]);
+    uploadFuncs.splice(artifactIndex, 1);
+  }
+
   if (options.parallel) {
     await Promise.all(uploadFuncs.map(fn => handleUploadFunc(fn)));
   } else {
     for (let x = 0; x < uploadFuncs.length; x++) {
       await handleUploadFunc(uploadFuncs[x]);
     }
-  }
-
-  const success = results.reduce((acc, value) => acc && value.success, true);
-  if (!success) {
-    throw new Error(
-      'Some files clould not be uploaded. Does they already exists?'
-    );
   }
 }
