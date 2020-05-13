@@ -7,7 +7,7 @@ This library is for uploading artifacts to repositories.
 Install
 
 ```
-npm install aurora-artifact-deployer
+npm install @skatteetaten/artifact-deployer
 ```
 
 ## Example
@@ -17,15 +17,14 @@ import {
   deployToNexus,
   DeployToNexusOptions,
   MavenSchema,
-  NexusDeployerConfig
-} from 'artifact-deployer';
-
+  NexusDeployerConfig,
+} from '@skatteetaten/artifact-deployer';
 
 const schema: MavenSchema = {
   artifactId: 'demo',
   groupId: 'no.skatteetaten.aurora',
   version: '1.0.0',
-  packaging: 'tgz'
+  packaging: 'tgz',
 };
 
 const config: NexusDeployerConfig = {
@@ -33,13 +32,13 @@ const config: NexusDeployerConfig = {
   url: 'http://localhost:8081/repository/maven-releases',
   auth: {
     password: 'admin',
-    username: 'admin123'
+    username: 'admin123',
   },
-  classifier: 'Webleveransepakke'
+  classifier: 'Webleveransepakke',
 };
 
 const options: DeployToNexusOptions = {
-  parallel: true
+  parallel: true,
 };
 
 deployToNexus(schema, config, options).catch(console.log);
