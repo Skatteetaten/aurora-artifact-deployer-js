@@ -24,7 +24,7 @@ export function mkdirp(dir: string): void {
             paths
               .slice(paths.length - 1)
               .concat(next)
-              .join('/')
+              .join('/'),
           ];
     }, [])
     .forEach((path): void => {

@@ -9,16 +9,16 @@ describe('MetadataService', () => {
         groupId: 'no.skatteetaten.aurora',
         lastUpdated: getLastUpdatedTime(new Date('August 26, 2019 20:08:00')),
         packaging: 'tgz',
-        version: '1.0.0'
+        version: '1.0.0',
       });
 
       const files = metadataService.generateMetadataFiles(
         Buffer.from('test'),
         'Webleveransepakke'
       );
-      const filesWithStringContent = files.map(file => ({
+      const filesWithStringContent = files.map((file) => ({
         ...file,
-        content: file.content.toString()
+        content: file.content.toString(),
       }));
 
       expect(filesWithStringContent).toMatchSnapshot();

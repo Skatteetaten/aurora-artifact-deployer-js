@@ -7,7 +7,7 @@ export function getLastUpdatedTime(date = new Date()): string {
     date.getDate(),
     date.getHours(),
     date.getMinutes(),
-    date.getSeconds()
+    date.getSeconds(),
   ].map((n): string => withZero(n));
 
   return [date.getFullYear(), ...rest].join('');

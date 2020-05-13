@@ -4,7 +4,7 @@ import { NexusDeployer } from '../services/nexus/NexusDeployer';
 import {
   MetadataService,
   FileType,
-  UploadFile
+  UploadFile,
 } from '../services/nexus/MetadataService';
 import { getLastUpdatedTime } from '../utils/date';
 import { mkdirp } from '../utils/files';
@@ -44,7 +44,7 @@ export async function deployToNexus(
     .generateMetadataFiles(artifactContent, config.classifier)
     .filter(filterFiles(options.excludeFileTypes));
   if (options.debug) {
-    files.forEach(file => console.log(file.path, file.name));
+    files.forEach((file) => console.log(file.path, file.name));
   }
 
   if (options.writeMetadataFiles) {
@@ -52,7 +52,7 @@ export async function deployToNexus(
       throw new Error('outDir is requried when enabling writeMetadataFiles');
     }
 
-    files.forEach(file => {
+    files.forEach((file) => {
       const dirPath = `${options.outDir}/${file.path}`;
       mkdirp(dirPath);
       writeFileSync(`${dirPath}/${file.name}`, file.content);
@@ -86,7 +86,7 @@ export async function deployToNexus(
   }
 
   if (options.parallel) {
-    await Promise.all(uploadFuncs.map(fn => handleUploadFunc(fn)));
+    await Promise.all(uploadFuncs.map((fn) => handleUploadFunc(fn)));
   } else {
     for (let x = 0; x < uploadFuncs.length; x++) {
       await handleUploadFunc(uploadFuncs[x]);
