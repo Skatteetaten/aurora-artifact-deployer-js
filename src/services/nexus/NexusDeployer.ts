@@ -39,16 +39,16 @@ export class NexusDeployer {
       auth: auth && `${auth.username}:${auth.password}`,
       headers: {
         'Content-Type': 'application/octet-stream',
-        'Content-Length': fileContent.byteLength
-      }
+        'Content-Length': fileContent.byteLength,
+      },
     };
 
     const requester = url.protocol === 'http:' ? http : https;
 
-    const req = requester.request(reqOptions, res => {
+    const req = requester.request(reqOptions, (res) => {
       const uploadPath = `${this.config.url}/${targetFile}`;
       res.setEncoding('utf8');
-      res.on('data', chunk => {
+      res.on('data', (chunk) => {
         console.log(chunk);
       });
       res.on('error', handleError);

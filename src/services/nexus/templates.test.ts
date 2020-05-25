@@ -2,7 +2,7 @@ import {
   MavenSchema,
   LATEST_METADATA_XML,
   POM_XML,
-  PROJECT_METADATA_XML
+  PROJECT_METADATA_XML,
 } from './templates';
 
 describe('Templates', (): void => {
@@ -11,7 +11,7 @@ describe('Templates', (): void => {
     groupId: 'com.github.skatteetaten',
     lastUpdated: '20190826200800',
     packaging: 'zip',
-    version: '1'
+    version: '1',
   };
 
   it('should create latest-metadata.xml', (): void => {

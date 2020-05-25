@@ -10,7 +10,7 @@ export const LATEST_METADATA_XML = ({
   artifactId,
   groupId,
   version,
-  lastUpdated
+  lastUpdated,
 }: MavenSchema): Buffer =>
   Buffer.from(`<?xml version="1.0" encoding="UTF-8"?>
 <metadata>
@@ -27,7 +27,7 @@ export const POM_XML = ({
   artifactId,
   groupId,
   packaging,
-  version
+  version,
 }: MavenSchema): Buffer =>
   Buffer.from(`<project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -45,7 +45,7 @@ export const PROJECT_METADATA_XML = ({
   artifactId,
   groupId,
   version,
-  lastUpdated
+  lastUpdated,
 }: MavenSchema): Buffer =>
   Buffer.from(`<?xml version="1.0" encoding="UTF-8"?>
 <metadata>

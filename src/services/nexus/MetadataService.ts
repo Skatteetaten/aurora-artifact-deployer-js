@@ -4,7 +4,7 @@ import {
   PROJECT_METADATA_XML,
   LATEST_METADATA_XML,
   POM_XML,
-  MavenSchema
+  MavenSchema,
 } from './templates';
 
 export interface ContentMetaData {
@@ -82,22 +82,22 @@ export class MetadataService {
     const files: ContentTypes = {
       project: {
         path: `${groupIdAsPath}/${artifactId}`,
-        name: `maven-metadata.xml`
+        name: `maven-metadata.xml`,
       },
       pom: {
         path: `${groupIdAsPath}/${artifactId}/${version}`,
-        name: `${artifactName}.pom`
+        name: `${artifactName}.pom`,
       },
       artifact: {
         path: `${groupIdAsPath}/${artifactId}/${version}`,
-        name: `${artifactNameWithClassifier}.${packaging}`
-      }
+        name: `${artifactNameWithClassifier}.${packaging}`,
+      },
     };
 
     if (version.search(/.*SNAPSHOT$/i) !== -1) {
       files.latest = {
         path: `${groupIdAsPath}/${artifactId}/${version}`,
-        name: `maven-metadata.xml`
+        name: `maven-metadata.xml`,
       };
     }
 
@@ -115,14 +115,14 @@ export class MetadataService {
         path,
         type,
         name: `${name}.md5`,
-        content: this.md5(content)
+        content: this.md5(content),
       },
       {
         path,
         type,
         name: `${name}.sha1`,
-        content: this.sha1(content)
-      }
+        content: this.sha1(content),
+      },
     ];
   }
 
