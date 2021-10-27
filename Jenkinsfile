@@ -12,7 +12,7 @@ def overrides = [
     credentialsId: "github",
     chatRoom: "#aos-notifications",
     openShiftBuild: false,
-    nodeVersion: '10',
+    nodeVersion: '12',
     deployTo: null,
     versionStrategy: [
         [ branch: 'master', versionHint: '2']
