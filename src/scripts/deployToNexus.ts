@@ -20,14 +20,14 @@ export interface DeployToNexusOptions {
 
 type FilterFileTypeFunc = (file: UploadFile) => boolean;
 
-const filterFiles = (
-  excludeTypes: FileType[] | undefined
-): FilterFileTypeFunc => (file: UploadFile) => {
-  if (excludeTypes === undefined || excludeTypes.length === 0) {
-    return true;
-  }
-  return !excludeTypes.includes(file.type);
-};
+const filterFiles =
+  (excludeTypes: FileType[] | undefined): FilterFileTypeFunc =>
+  (file: UploadFile) => {
+    if (excludeTypes === undefined || excludeTypes.length === 0) {
+      return true;
+    }
+    return !excludeTypes.includes(file.type);
+  };
 
 export async function deployToNexus(
   schema: MavenSchema,
@@ -60,12 +60,14 @@ export async function deployToNexus(
   }
   const deployer = new NexusDeployer(config);
 
-  const createPromise = (file: UploadFile): (() => Promise<string>) => () => {
-    return new Promise<string>((resolve, reject) => {
-      const path = `${file.path}/${file.name}`;
-      deployer.uploadContent(file.content, path, resolve, reject);
-    });
-  };
+  const createPromise =
+    (file: UploadFile): (() => Promise<string>) =>
+    () => {
+      return new Promise<string>((resolve, reject) => {
+        const path = `${file.path}/${file.name}`;
+        deployer.uploadContent(file.content, path, resolve, reject);
+      });
+    };
 
   const uploadFuncs = files.map(createPromise);
   const handleUploadFunc = async (fn: () => Promise<string>): Promise<void> => {
